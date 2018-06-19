@@ -33,4 +33,22 @@ class PencilSharpenerSpec extends Specification {
             ex.message == "Pencil sharpeners are only for pencils sorry try again."
     }
 
+    def "pencil sharpener cannot sharpen an empty pencil"(){
+        given :
+            PencilSharpener sharpener = new PencilSharpener()
+
+        and :
+            Pencil writingUtensil = Mock()
+
+        and :
+            writingUtensil.isEmpty() >> true
+
+        when :
+            sharpener.sharpen(writingUtensil)
+
+        then :
+            def ex = thrown(IllegalStateException)
+            ex.message == "Pencil is no more....what do you want me to do??"
+    }
+
 }
