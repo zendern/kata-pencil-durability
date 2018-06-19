@@ -13,7 +13,7 @@ class PencilSpec extends Specification {
             def expectedValueToWrite = "write me down"
 
         when:
-            Pencil pencil = new Pencil()
+            Pencil pencil = new Pencil(1_000)
             pencil.writeOn(writingSurface, expectedValueToWrite)
 
         then: "I should have written it to the surface"
@@ -51,9 +51,12 @@ class PencilSpec extends Specification {
         then:
             writingUtensil.needsSharpened() == needSharpened
 
+        and :
+            1 * surface.write(valueWritten)
+
         where:
-            type        | expectedDurailbity | valueToWrite | needSharpened
-            "lowercase" | 3                  | "test"       | true
+            type        | expectedDurailbity | valueToWrite | valueWritten | needSharpened
+            "lowercase" | 3                  | "test"       | "tes"       | true
 
     }
 

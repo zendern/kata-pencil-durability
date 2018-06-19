@@ -20,12 +20,14 @@ class Pencil implements WritingUtensil {
 
     @Override
     void writeOn(WritingSurface writingSurface, String valueToWrite) {
+        StringBuilder writeBuffer = new StringBuilder()
         for (char character in valueToWrite) {
             if (durability == 0) {
                 break
             }
             durability = durability - 1
+            writeBuffer.append(character)
         }
-        writingSurface.write(valueToWrite)
+        writingSurface.write(writeBuffer.toString())
     }
 }
