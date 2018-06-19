@@ -19,7 +19,7 @@ class WriterSpec extends Specification {
             def expectedWrittenValue = "some text"
 
         when : "I write something down"
-            Person writer = new Person(writingUtensil: writingUtensil, writingSurface: writingSurface)
+            Writer writer = new Writer(writingUtensil: writingUtensil, writingSurface: writingSurface)
             writer.write(expectedWrittenValue)
 
         then : "the utensil writes to the surface"
@@ -37,7 +37,7 @@ class WriterSpec extends Specification {
             def expectedWrittenValue = "some text"
 
         and : "I write something down"
-            Person writer = new Person(writingUtensil: writingUtensil, writingSurface: writingSurface)
+            Writer writer = new Writer(writingUtensil: writingUtensil, writingSurface: writingSurface)
             writer.write(expectedWrittenValue)
 
         when : "I want to read it back to myself"
@@ -58,7 +58,7 @@ class WriterSpec extends Specification {
             UtensilSharpener sharpener = Mock()
 
         and :
-            Person writer = new Person(writingUtensil : writingUtensil, sharpener : sharpener)
+            Writer writer = new Writer(writingUtensil : writingUtensil, sharpener : sharpener)
 
         when : "I want sharpen my utensil"
             writer.sharpenUtensil()
@@ -75,7 +75,7 @@ class WriterSpec extends Specification {
             WritingSurface writingSurface = Mock()
 
         and :
-            Person writer = new Person(writingUtensil : writingUtensil, writingSurface: writingSurface)
+            Writer writer = new Writer(writingUtensil : writingUtensil, writingSurface: writingSurface)
 
         and :
             def valueToErase = "text to erase"

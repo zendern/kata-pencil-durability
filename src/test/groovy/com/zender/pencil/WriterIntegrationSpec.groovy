@@ -18,7 +18,7 @@ class WriterIntegrationSpec extends Specification {
             UtensilSharpener sharpener = new PencilSharpener()
 
         and :
-            Person writer = new Person(writingUtensil: pencil, writingSurface: surface, sharpener: sharpener)
+            Writer writer = new Writer(writingUtensil: pencil, writingSurface: surface, sharpener: sharpener)
 
         when : "I want to write something down"
             writer.write("big gulps huh well alright then")

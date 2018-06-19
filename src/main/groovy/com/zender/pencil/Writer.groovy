@@ -4,7 +4,7 @@ import com.zender.pencil.surfaces.WritingSurface
 import com.zender.pencil.utensils.UtensilSharpener
 import com.zender.pencil.utensils.WritingUtensil
 
-class Person {
+class Writer {
     WritingSurface writingSurface
     WritingUtensil writingUtensil
     UtensilSharpener sharpener
