@@ -10,7 +10,7 @@ class PencilSpec extends Specification {
             WritingSurface writingSurface = Mock()
 
         and: "I know what I am to write"
-            def expectedValueToWrite = "writemedown"
+            def expectedValueToWrite = "write me down"
 
         when:
             Pencil pencil = new Pencil(1_000)
@@ -55,15 +55,17 @@ class PencilSpec extends Specification {
             1 * surface.write(valueWritten)
 
         where:
-            type                         | expectedDurailbity | valueToWrite | valueWritten | needSharpened
-            "lowercase-we-ran-out"       | 3                  | "test"       | "tes"        | true
-            "lowercase-still-good"       | 5                  | "test"       | "test"       | false
-            "lowercase-exact"            | 4                  | "test"       | "test"       | true
-            "lowercase-not-quite-enough" | 0                  | "t"          | ""           | true
-            "uppercase-we-ran-out"       | 6                  | "TEST"       | "TES"        | true
-            "uppercase-still-good"       | 9                  | "TEST"       | "TEST"       | false
-            "uppercase-exact"            | 8                  | "TEST"       | "TEST"       | true
-            "uppercase-not-quite-enough" | 1                  | "T"          | ""           | false
+            type                         | expectedDurailbity | valueToWrite         | valueWritten       | needSharpened
+            "lowercase-we-ran-out"       | 3                  | "test"               | "tes"              | true
+            "lowercase-still-good"       | 5                  | "test"               | "test"             | false
+            "lowercase-exact"            | 4                  | "test"               | "test"             | true
+            "lowercase-not-quite-enough" | 0                  | "t"                  | ""                 | true
+            "uppercase-we-ran-out"       | 6                  | "TEST"               | "TES"              | true
+            "uppercase-still-good"       | 9                  | "TEST"               | "TEST"             | false
+            "uppercase-exact"            | 8                  | "TEST"               | "TEST"             | true
+            "uppercase-not-quite-enough" | 1                  | "T"                  | ""                 | false
+            "spaces-are-free"            | 1                  | "             "      | "             "    | false
+            "newlines-are-free"          | 1                  | "\n\n\n\n\n\n\n\n\n" | "\n\n\n\n\n\n\n\n\n" | false
     }
 
 }
