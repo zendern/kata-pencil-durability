@@ -1,5 +1,7 @@
 package com.zender.pencil
 
+import com.zender.pencil.utensils.WritingUtensil
+
 class Person {
     WritingSurface writingSurface
     WritingUtensil writingUtensil

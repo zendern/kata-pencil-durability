@@ -1,4 +1,6 @@
-package com.zender.pencil
+package com.zender.pencil.utensils
+
+import com.zender.pencil.WritingSurface
 
 interface WritingUtensil {
 
