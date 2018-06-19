@@ -24,4 +24,8 @@ class Writer {
     void erase(String valueToErase) {
         writingUtensil.erase(writingSurface, valueToErase)
     }
+
+    void edit(String valueToEdit) {
+        writingUtensil.edit(writingSurface, valueToEdit)
+    }
 }

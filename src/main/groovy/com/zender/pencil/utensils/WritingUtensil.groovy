@@ -9,4 +9,5 @@ interface WritingUtensil {
     boolean isEmpty()
     void erase(WritingSurface writingSurface, String valueToErase)
     boolean hasEraserLeft()
+    void edit(WritingSurface writingSurface, String valueToEdit)
 }

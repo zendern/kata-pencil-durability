@@ -87,4 +87,24 @@ class WriterSpec extends Specification {
             1 * writingUtensil.erase(writingSurface, valueToErase)
     }
 
+    def "as a writer I want to be able to do some editing"(){
+        given : "I have a writing utensil"
+            WritingUtensil writingUtensil = Mock()
+
+        and : "I have a the surface that I wrote on"
+            WritingSurface writingSurface = Mock()
+
+        and :
+            Writer writer = new Writer(writingUtensil : writingUtensil, writingSurface: writingSurface)
+
+        and :
+            def valueToEdit = "new value"
+
+        when : "I want edit something"
+            writer.edit(valueToEdit)
+
+        then :
+            1 * writingUtensil.edit(writingSurface, valueToEdit)
+    }
+
 }

@@ -66,6 +66,11 @@ class Pencil implements WritingUtensil {
         eraserDurability > 0
     }
 
+    @Override
+    void edit(WritingSurface writingSurface, String valueToEdit) {
+
+    }
+
     protected void sharpen() {
         this.length = this.length - 1
         this.durability = this.originalDurability
