@@ -26,4 +26,13 @@ class PencilSpec extends Specification {
         then :
             writingUtensil.needsSharpened()
     }
+
+    def "pencil can be sharp when new"(){
+        when : "I have a brand new pencil that has been sharpened"
+            int randomDurability = new Random().nextInt(1_000) + 1
+            WritingUtensil writingUtensil = new Pencil(randomDurability)
+
+        then :
+            !writingUtensil.needsSharpened()
+    }
 }

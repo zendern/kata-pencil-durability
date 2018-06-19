@@ -9,6 +9,10 @@ class Pencil implements WritingUtensil {
         this.durability = 0
     }
 
+    Pencil(int durability){
+        this.durability = durability
+    }
+
     @Override
     boolean needsSharpened(){
         durability == 0
