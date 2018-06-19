@@ -35,4 +35,39 @@ class PencilSharpenerIntegrationSpec extends Specification {
         and : "1234 was written on surface twice"
             surface.readCompletely() == "abcdabcd"
     }
+
+    def "pencil can only be sharpened 5 times by default"(){
+        given :
+            WritingUtensil pencil = new Pencil(4)
+
+        and :
+            UtensilSharpener sharpener = new PencilSharpener()
+
+        when : "I sharpen the pencil over and over"
+            (1..5).each {
+                sharpener.sharpen(pencil)
+            }
+
+        then : "pencil will seize to exist"
+            pencil.isEmpty()
+    }
+
+    def "pencil can only be sharpened so many times"(){
+        given :
+            def expectedLength = 2
+            WritingUtensil pencil = new Pencil(4, expectedLength)
+
+        and :
+            UtensilSharpener sharpener = new PencilSharpener()
+
+        when : "I sharpen the pencil over and over"
+            (1..expectedLength).each {
+                sharpener.sharpen(pencil)
+            }
+
+        then : "pencil will seize to exist"
+            pencil.isEmpty()
+    }
+
+
 }

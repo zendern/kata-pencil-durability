@@ -5,10 +5,12 @@ import com.zender.pencil.surfaces.WritingSurface
 class Pencil implements WritingUtensil {
     private int durability
     private int originalDurability
+    private int length
 
-    Pencil(int durability){
+    Pencil(int durability, int length = 5){
         this.durability = durability
         this.originalDurability = durability
+        this.length = length
     }
 
     @Override
@@ -36,7 +38,13 @@ class Pencil implements WritingUtensil {
         writingSurface.write(writeBuffer.toString())
     }
 
+    @Override
+    boolean isEmpty() {
+        this.length == 0
+    }
+
     protected void sharpen() {
+        this.length = this.length - 1
         this.durability = this.originalDurability
     }
 }
