@@ -68,7 +68,7 @@ class Pencil implements WritingUtensil {
 
     @Override
     void edit(WritingSurface writingSurface, String valueToEdit) {
-
+        writingSurface.edit(valueToEdit)
     }
 
     protected void sharpen() {

@@ -113,5 +113,23 @@ class PencilSpec extends Specification {
             "numbers"                    | 6                  | "12345678"    | "345678"   | false
     }
 
+    def "pencil can edit value from surface"() {
+        given:
+            WritingUtensil writingUtensil = new Pencil(100)
+
+        and:
+            WritingSurface surface = Mock()
+
+        and:
+            def expectedValueToErase = "valueToEdit"
+
+        when:
+            writingUtensil.edit(surface, expectedValueToErase)
+
+
+        then:
+            1 * surface.edit(expectedValueToErase)
+    }
+
 
 }

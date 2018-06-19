@@ -7,4 +7,6 @@ interface WritingSurface {
     void write(String valueToWrite)
 
     void erase(String valueToErase)
+
+    void edit(String valueToEdit)
 }
