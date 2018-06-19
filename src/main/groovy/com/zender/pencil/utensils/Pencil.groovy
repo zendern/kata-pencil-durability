@@ -8,7 +8,7 @@ class Pencil implements WritingUtensil {
     private int length
     private int eraserDurability
 
-    Pencil(int durability, int length = 5, int eraserDurability = 5){
+    Pencil(int durability, int length = 5, int eraserDurability = 15){
         this.durability = durability
         this.originalDurability = durability
         this.length = length
@@ -47,7 +47,18 @@ class Pencil implements WritingUtensil {
 
     @Override
     void erase(WritingSurface writingSurface, String valueToErase) {
-        writingSurface.erase(valueToErase)
+        if(!hasEraserLeft()){
+            return
+        }
+
+        StringBuilder eraseBuffer = new StringBuilder()
+        for (char character in valueToErase.reverse()) {
+            if(eraserDurability >= 1){
+                eraserDurability = eraserDurability - 1
+                eraseBuffer.append(character)
+            }
+        }
+        writingSurface.erase(eraseBuffer.reverse().toString())
     }
 
     @Override

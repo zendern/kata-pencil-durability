@@ -75,9 +75,42 @@ class PencilSpec extends Specification {
             writingUtensil.hasEraserLeft() == hasEraserLeft
 
         where:
-            eraserDurability                     | hasEraserLeft
-            0                                    | false
+            eraserDurability              | hasEraserLeft
+            0                             | false
             new Random().nextInt(100) + 1 | true
+    }
+
+    @Unroll
+    def "erasing degrades pencil's eraser durability : #type"() {
+        given: "I have a pencil with a given durability"
+            WritingUtensil writingUtensil = new Pencil(1_000, 6, expectedDurailbity)
+
+        and: "a writing surface"
+            WritingSurface surface = Mock()
+
+        when:
+            writingUtensil.erase(surface, valueToErase)
+
+        then:
+            writingUtensil.hasEraserLeft() == hasEraserLeft
+
+        and:
+            if (valueErased != "") {
+                1 * surface.erase(valueErased)
+            }
+
+        where:
+            type                         | expectedDurailbity | valueToErase | valueErased | hasEraserLeft
+            "cant-erase-if-nothing-left" | 0                  | "t"          | ""          | false
+            "lowercase-we-ran-out"       | 3                  | "test"       | "est"       | false
+            "lowercase-still-good"       | 5                  | "test"       | "test"      | true
+            "lowercase-exact"            | 4                  | "test"       | "test"      | false
+            "uppercase-we-ran-out"       | 3                  | "TEST"       | "EST"       | false
+            "uppercase-still-good"       | 5                  | "TEST"       | "TEST"      | true
+            "uppercase-exact"            | 4                  | "TEST"       | "TEST"      | false
+            "mixed-case"                 | 4                  | "Text"       | "Text"      | false
+            "mixed-case-and-whitespace"  | 6                  | "T e\nxt"    | "T e\nxt"   | false
+            "numbers"                    | 6                  | "12345678"    | "345678"   | false
     }
 
 
