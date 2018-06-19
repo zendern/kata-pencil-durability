@@ -6,5 +6,4 @@ interface WritingUtensil {
 
     boolean needsSharpened()
     void writeOn(WritingSurface writingSurface, String valueToWrite)
-    void sharpen()
 }

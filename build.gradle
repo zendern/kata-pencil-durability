@@ -14,5 +14,6 @@ test {
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.15'
+    testRuntime "net.bytebuddy:byte-buddy:1.6.5"
     testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
 }
