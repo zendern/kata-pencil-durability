@@ -48,4 +48,22 @@ class WriterSpec extends Specification {
         and: "the value return is exactly what I wrote"
             actualValue == expectedWrittenValue
     }
+
+    def "as a writer I want to be able to sharpen my utensil"(){
+        given : "I have a writing utensil"
+            WritingUtensil writingUtensil = Mock()
+
+        and : "I have a sharpener"
+            UtensilSharpener sharpener = Mock()
+
+        and :
+            Person writer = new Person(writingUtensil : writingUtensil, sharpener : sharpener)
+
+        when : "I want sharpen my utensil"
+            writer.sharpenUtensil()
+
+        then :
+            1 * sharpener.sharpen(writingUtensil)
+    }
+
 }
