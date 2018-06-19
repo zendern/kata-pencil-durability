@@ -8,4 +8,5 @@ interface WritingUtensil {
     void writeOn(WritingSurface writingSurface, String valueToWrite)
     boolean isEmpty()
     void erase(WritingSurface writingSurface, String valueToErase)
+    boolean hasEraserLeft()
 }

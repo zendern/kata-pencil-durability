@@ -7,10 +7,10 @@ import spock.lang.Unroll
 class PencilSpec extends Specification {
 
     def "pencil can erase from surface"() {
-        given :
+        given:
             WritingUtensil writingUtensil = new Pencil(100)
 
-        and :
+        and:
             WritingSurface surface = Mock()
 
         and:
@@ -65,5 +65,20 @@ class PencilSpec extends Specification {
             "mixed-case"                 | 4                  | "Text"               | "Tex"                | true
             "mixed-case-and-whitespace"  | 4                  | "T e\nxt"            | "T e\nx"             | true
     }
+
+    @Unroll
+    def "we can see the state of the eraser : #hasEraserLeft"() {
+        when: "I have a brand new pencil that has been sharpened"
+            WritingUtensil writingUtensil = new Pencil(10, 5, eraserDurability)
+
+        then:
+            writingUtensil.hasEraserLeft() == hasEraserLeft
+
+        where:
+            eraserDurability                     | hasEraserLeft
+            0                                    | false
+            new Random().nextInt(100) + 1 | true
+    }
+
 
 }

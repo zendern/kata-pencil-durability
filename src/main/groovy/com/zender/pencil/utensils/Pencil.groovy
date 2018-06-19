@@ -6,11 +6,13 @@ class Pencil implements WritingUtensil {
     private int durability
     private int originalDurability
     private int length
+    private int eraserDurability
 
-    Pencil(int durability, int length = 5){
+    Pencil(int durability, int length = 5, int eraserDurability = 5){
         this.durability = durability
         this.originalDurability = durability
         this.length = length
+        this.eraserDurability = eraserDurability
     }
 
     @Override
@@ -46,6 +48,11 @@ class Pencil implements WritingUtensil {
     @Override
     void erase(WritingSurface writingSurface, String valueToErase) {
         writingSurface.erase(valueToErase)
+    }
+
+    @Override
+    boolean hasEraserLeft() {
+        eraserDurability > 0
     }
 
     protected void sharpen() {
