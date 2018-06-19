@@ -51,12 +51,14 @@ class PencilSpec extends Specification {
         then:
             writingUtensil.needsSharpened() == needSharpened
 
-        and :
+        and:
             1 * surface.write(valueWritten)
 
         where:
-            type        | expectedDurailbity | valueToWrite | valueWritten | needSharpened
-            "lowercase" | 3                  | "test"       | "tes"       | true
+            type                   | expectedDurailbity | valueToWrite | valueWritten | needSharpened
+            "lowercase-we-ran-out" | 3                  | "test"       | "tes"        | true
+            "lowercase-still-good" | 5                  | "test"       | "test"       | false
+            "lowercase-exact"      | 4                  | "test"       | "test"       | true
 
     }
 
