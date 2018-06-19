@@ -1,7 +1,7 @@
 package com.zender.pencil.surfaces
 
 class Paper implements WritingSurface {
-    String surfaceStorage
+    StringBuffer surfaceStorage = new StringBuffer()
 
     @Override
     String readCompletely() {
@@ -10,6 +10,6 @@ class Paper implements WritingSurface {
 
     @Override
     void write(String valueToWrite) {
-        this.surfaceStorage = valueToWrite
+        this.surfaceStorage.append(valueToWrite)
     }
 }

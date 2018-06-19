@@ -14,4 +14,18 @@ class PaperSpec extends Specification {
         then : "The value can be read back from the surface"
             paper.readCompletely() == expectedWrittenValue
     }
+
+    def "I keep on writing on the paper and it just keeps on adding it"(){
+        given: "I have multiple things that should be on the surface"
+            def expectedWrittenValues = ["im going to put this here", "and this", "\n and maybe some of this"]
+
+        when : "The value is written"
+            Paper paper = new Paper()
+            expectedWrittenValues.each{value->
+                paper.write(value)
+            }
+
+        then : "The value can be read back from the surface"
+            paper.readCompletely() == expectedWrittenValues.join("")
+    }
 }
