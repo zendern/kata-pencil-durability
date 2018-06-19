@@ -1,5 +1,6 @@
-package com.zender.pencil
+package com.zender.pencil.utensils
 
+import com.zender.pencil.utensils.Sharpener
 import com.zender.pencil.utensils.WritingUtensil
 import spock.lang.Specification
 

@@ -1,6 +1,4 @@
-package com.zender.pencil
-
-import com.zender.pencil.utensils.WritingUtensil
+package com.zender.pencil.utensils
 
 interface UtensilSharpener {
 
