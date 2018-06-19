@@ -5,20 +5,6 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 class PencilSpec extends Specification {
-    def "I write the value to the surface"() {
-        given: "I have a surface to write on"
-            WritingSurface writingSurface = Mock()
-
-        and: "I know what I am to write"
-            def expectedValueToWrite = "write me down"
-
-        when:
-            Pencil pencil = new Pencil(1_000)
-            pencil.writeOn(writingSurface, expectedValueToWrite)
-
-        then: "I should have written it to the surface"
-            1 * writingSurface.write(expectedValueToWrite)
-    }
 
     def "pencil needs sharpened when new"() {
         when: "I have a brand new pencil"
@@ -55,17 +41,19 @@ class PencilSpec extends Specification {
             1 * surface.write(valueWritten)
 
         where:
-            type                         | expectedDurailbity | valueToWrite         | valueWritten       | needSharpened
-            "lowercase-we-ran-out"       | 3                  | "test"               | "tes"              | true
-            "lowercase-still-good"       | 5                  | "test"               | "test"             | false
-            "lowercase-exact"            | 4                  | "test"               | "test"             | true
-            "lowercase-not-quite-enough" | 0                  | "t"                  | ""                 | true
-            "uppercase-we-ran-out"       | 6                  | "TEST"               | "TES"              | true
-            "uppercase-still-good"       | 9                  | "TEST"               | "TEST"             | false
-            "uppercase-exact"            | 8                  | "TEST"               | "TEST"             | true
-            "uppercase-not-quite-enough" | 1                  | "T"                  | ""                 | false
-            "spaces-are-free"            | 1                  | "             "      | "             "    | false
+            type                         | expectedDurailbity | valueToWrite         | valueWritten         | needSharpened
+            "lowercase-we-ran-out"       | 3                  | "test"               | "tes"                | true
+            "lowercase-still-good"       | 5                  | "test"               | "test"               | false
+            "lowercase-exact"            | 4                  | "test"               | "test"               | true
+            "lowercase-not-quite-enough" | 0                  | "t"                  | ""                   | true
+            "uppercase-we-ran-out"       | 6                  | "TEST"               | "TES"                | true
+            "uppercase-still-good"       | 9                  | "TEST"               | "TEST"               | false
+            "uppercase-exact"            | 8                  | "TEST"               | "TEST"               | true
+            "uppercase-not-quite-enough" | 1                  | "T"                  | ""                   | false
+            "spaces-are-free"            | 1                  | "             "      | "             "      | false
             "newlines-are-free"          | 1                  | "\n\n\n\n\n\n\n\n\n" | "\n\n\n\n\n\n\n\n\n" | false
+            "mixed-case"                 | 4                  | "Text"               | "Tex"                | true
+            "mixed-case-and-whitespace"  | 4                  | "T e\nxt"            | "T e\nx"             | true
     }
 
 }
