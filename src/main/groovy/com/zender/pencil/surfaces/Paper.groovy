@@ -28,6 +28,18 @@ class Paper implements WritingSurface {
 
     @Override
     void edit(String valueToEdit) {
-        surfaceStorage.replace(this.indexOfLastErasedWord, this.indexOfLastErasedWord + this.lengthOfLastErasedWord, valueToEdit)
+        if(lengthOfLastErasedWord < valueToEdit.length()){
+            for(int i = indexOfLastErasedWord; i < indexOfLastErasedWord + valueToEdit.length(); i ++){
+                def currentCharOnSurface = surfaceStorage.getAt(i)
+                def wantedEditedChar = valueToEdit.charAt(i - indexOfLastErasedWord)
+                if(currentCharOnSurface == " "){
+                    surfaceStorage.replace(i, i+1, wantedEditedChar as String)
+                }else if(currentCharOnSurface != wantedEditedChar){
+                    surfaceStorage.replace(i, i+1, "@")
+                }
+            }
+        }else{
+            surfaceStorage.replace(this.indexOfLastErasedWord, this.indexOfLastErasedWord + this.lengthOfLastErasedWord, valueToEdit)
+        }
     }
 }
