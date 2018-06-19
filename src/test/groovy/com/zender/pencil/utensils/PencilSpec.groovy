@@ -6,14 +6,6 @@ import spock.lang.Unroll
 
 class PencilSpec extends Specification {
 
-    def "pencil needs sharpened when new"() {
-        when: "I have a brand new pencil"
-            WritingUtensil writingUtensil = new Pencil()
-
-        then:
-            writingUtensil.needsSharpened()
-    }
-
     def "pencil can be sharp when new"() {
         when: "I have a brand new pencil that has been sharpened"
             int randomDurability = new Random().nextInt(1_000) + 1

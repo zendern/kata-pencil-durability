@@ -6,10 +6,6 @@ class Pencil implements WritingUtensil {
     private int durability
     private int originalDurability
 
-    Pencil(){
-        this.durability = 0
-    }
-
     Pencil(int durability){
         this.durability = durability
         this.originalDurability = durability
