@@ -40,6 +40,12 @@ class WriterIntegrationSpec extends Specification {
 
         and : "and proof read one more time"
             writer.read() == "big gulps huh well alright then    "
+
+        and : "then i erase until my eraser is gone"
+            writer.erase("big gulps huh well")
+
+        and : "then read the non sense that is left"
+            writer.read() == "big gu             alright then    "
     }
 
 }
