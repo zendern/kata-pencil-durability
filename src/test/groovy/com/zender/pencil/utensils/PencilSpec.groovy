@@ -19,4 +19,11 @@ class PencilSpec extends Specification {
             1 * writingSurface.write(expectedValueToWrite)
     }
 
+    def "pencil needs sharpened when new"(){
+        when : "I have a brand new pencil"
+            WritingUtensil writingUtensil = new Pencil()
+
+        then :
+            writingUtensil.needsSharpened()
+    }
 }
