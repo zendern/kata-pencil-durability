@@ -37,4 +37,9 @@ class Pencil implements WritingUtensil {
         }
         writingSurface.write(writeBuffer.toString())
     }
+
+    @Override
+    void sharpen() {
+
+    }
 }
