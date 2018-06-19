@@ -49,4 +49,25 @@ class PaperSpec extends Specification {
         then :
             surface.readCompletely() == "How much wood would a woodchuck chuck if a wood      could       wood?"
     }
+
+    def "I can edit the last spot that was erased"(){
+        given: "a writing surface"
+            WritingSurface surface = new Paper()
+
+        and:
+            def valueToWrite = "How much wood would a woodchuck chuck if a woodchuck could chuck wood?"
+            surface.write(valueToWrite)
+
+        and:
+            surface.erase("chuck")
+
+        and :
+            surface.readCompletely() == "How much wood would a woodchuck chuck if a woodchuck could      wood?"
+
+        when:
+            surface.edit("chomp")
+
+        then :
+            surface.readCompletely() == "How much wood would a woodchuck chuck if a woodchuck could chomp wood?"
+    }
 }
