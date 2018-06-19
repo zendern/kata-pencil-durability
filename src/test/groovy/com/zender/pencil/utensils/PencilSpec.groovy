@@ -6,6 +6,24 @@ import spock.lang.Unroll
 
 class PencilSpec extends Specification {
 
+    def "pencil can erase from surface"() {
+        given :
+            WritingUtensil writingUtensil = new Pencil(100)
+
+        and :
+            WritingSurface surface = Mock()
+
+        and:
+            def expectedValueToErase = "valueToErase"
+
+        when:
+            writingUtensil.erase(surface, expectedValueToErase)
+
+
+        then:
+            1 * surface.erase(expectedValueToErase)
+    }
+
     def "pencil can be sharp when new"() {
         when: "I have a brand new pencil that has been sharpened"
             int randomDurability = new Random().nextInt(1_000) + 1

@@ -45,7 +45,7 @@ class Pencil implements WritingUtensil {
 
     @Override
     void erase(WritingSurface writingSurface, String valueToErase) {
-
+        writingSurface.erase(valueToErase)
     }
 
     protected void sharpen() {

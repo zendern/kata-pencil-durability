@@ -12,4 +12,9 @@ class Paper implements WritingSurface {
     void write(String valueToWrite) {
         this.surfaceStorage.append(valueToWrite)
     }
+
+    @Override
+    void erase(String valueToErase) {
+
+    }
 }
