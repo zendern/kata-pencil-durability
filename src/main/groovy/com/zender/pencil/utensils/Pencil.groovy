@@ -25,8 +25,13 @@ class Pencil implements WritingUtensil {
             if (durability == 0) {
                 break
             }
-            durability = durability - 1
-            writeBuffer.append(character)
+            if(character.isLowerCase() && durability >= 1){
+                durability = durability - 1
+                writeBuffer.append(character)
+            }else if(character.isUpperCase() && durability >= 2){
+                durability = durability - 2
+                writeBuffer.append(character)
+            }
         }
         writingSurface.write(writeBuffer.toString())
     }
