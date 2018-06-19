@@ -67,4 +67,24 @@ class WriterSpec extends Specification {
             1 * sharpener.sharpen(writingUtensil)
     }
 
+    def "as a writer I want to be able to erase some text"(){
+        given : "I have a writing utensil"
+            WritingUtensil writingUtensil = Mock()
+
+        and : "I have a the surface that I wrote on"
+            WritingSurface writingSurface = Mock()
+
+        and :
+            Person writer = new Person(writingUtensil : writingUtensil, writingSurface: writingSurface)
+
+        and :
+            def valueToErase = "text to erase"
+
+        when : "I want erase something"
+            writer.erase(valueToErase)
+
+        then :
+            1 * writingUtensil.erase(writingSurface, valueToErase)
+    }
+
 }

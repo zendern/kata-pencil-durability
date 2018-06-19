@@ -7,4 +7,5 @@ interface WritingUtensil {
     boolean needsSharpened()
     void writeOn(WritingSurface writingSurface, String valueToWrite)
     boolean isEmpty()
+    void erase(WritingSurface writingSurface, String valueToErase)
 }

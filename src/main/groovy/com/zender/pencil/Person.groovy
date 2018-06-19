@@ -20,4 +20,8 @@ class Person {
     void sharpenUtensil() {
         sharpener.sharpen(writingUtensil)
     }
+
+    void erase(String valueToErase) {
+        writingUtensil.erase(writingSurface, valueToErase)
+    }
 }
