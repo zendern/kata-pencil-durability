@@ -28,4 +28,25 @@ class PaperSpec extends Specification {
         then : "The value can be read back from the surface"
             paper.readCompletely() == expectedWrittenValues.join("")
     }
+
+    def "I can erase things"(){
+        given: "a writing surface"
+            WritingSurface surface = new Paper()
+
+        and:
+            def valueToWrite = "How much wood would a woodchuck chuck if a woodchuck could chuck wood?"
+            surface.write(valueToWrite)
+
+        when:
+            surface.erase("chuck")
+
+        then:
+            surface.readCompletely() == "How much wood would a woodchuck chuck if a woodchuck could       wood?"
+
+        and : "we erase again"
+            surface.erase("chuck")
+
+        then :
+            surface.readCompletely() == "How much wood would a woodchuck chuck if a wood      could       wood?"
+    }
 }

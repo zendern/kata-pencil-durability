@@ -15,6 +15,8 @@ class Paper implements WritingSurface {
 
     @Override
     void erase(String valueToErase) {
-
+        def fullText = readCompletely()
+        def lastIndexOf = fullText.lastIndexOf(valueToErase);
+        surfaceStorage.replace(lastIndexOf, lastIndexOf + valueToErase.length(), valueToErase.collectReplacements {" "})
     }
 }
