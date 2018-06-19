@@ -1,4 +1,4 @@
-package com.zender.pencil
+package com.zender.pencil.surfaces
 
 interface WritingSurface {
 

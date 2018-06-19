@@ -1,6 +1,6 @@
 package com.zender.pencil.utensils
 
-import com.zender.pencil.WritingSurface
+import com.zender.pencil.surfaces.WritingSurface
 import spock.lang.Specification
 
 class PencilSpec extends Specification {

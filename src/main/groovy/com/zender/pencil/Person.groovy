@@ -1,5 +1,6 @@
 package com.zender.pencil
 
+import com.zender.pencil.surfaces.WritingSurface
 import com.zender.pencil.utensils.WritingUtensil
 
 class Person {
