@@ -7,4 +7,8 @@ class Person {
     void write(String value) {
         writingUtensil.writeOn(writingSurface, value)
     }
+
+    String read() {
+        writingSurface.readCompletely()
+    }
 }
