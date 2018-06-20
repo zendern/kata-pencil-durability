@@ -46,6 +46,12 @@ class WriterIntegrationSpec extends Specification {
 
         and : "then read the non sense that is left"
             writer.read() == "big gu             alright then    "
+
+        and : "i then fix the nonsense"
+            writer.edit("lps huh well")
+
+        and : "then read what i have after editing"
+            writer.read() == "big gulps huh well alright then    "
     }
 
 }
